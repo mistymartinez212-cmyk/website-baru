@@ -385,3 +385,32 @@ footer p {
   pointer-events: none;
   background: #0a0a0a; /* fallback gelap */
 }
+
+/* Canvas background */
+#tetrisParticles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  background: #0a0a0a; /* fallback gelap */
+}
+
+/* Semua section transparan */
+header,
+section,
+footer {
+  background: transparent;
+  position: relative;
+  z-index: 2;
+  color: white;
+}
+
+/* Teks lebih jelas */
+h1, h2, h3, h4, p, li {
+  text-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+
+
