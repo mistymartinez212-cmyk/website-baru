@@ -46,3 +46,60 @@ function revealOnScroll() {
 window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
 
+
+// === GLOBAL TETRIS PARTICLE BACKGROUND ===
+const canvasParticles = document.getElementById("tetrisParticles");
+if (canvasParticles) {
+  const ctx = canvasParticles.getContext("2d");
+
+  function resizeCanvas() {
+    canvasParticles.width = window.innerWidth;
+    canvasParticles.height = window.innerHeight;
+  }
+  window.addEventListener("resize", resizeCanvas);
+  resizeCanvas();
+
+  const colors = ["#FF00CC", "#00FFFF", "#FF8E0D", "#00FF72", "#F538FF"];
+
+  function randomBlock() {
+    const size = 20 + Math.random() * 30;
+    return {
+      x: Math.random() * canvasParticles.width,
+      y: Math.random() * canvasParticles.height,
+      size,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      speed: 0.5 + Math.random() * 1.2,
+      angle: Math.random() * Math.PI * 2,
+      rotation: (Math.random() - 0.5) * 0.02, // biar muter pelan
+    };
+  }
+
+  const blocks = Array.from({ length: 50 }, randomBlock);
+
+  function drawBlocks() {
+    ctx.clearRect(0, 0, canvasParticles.width, canvasParticles.height);
+
+    blocks.forEach((b) => {
+      ctx.save();
+      ctx.translate(b.x + b.size / 2, b.y + b.size / 2);
+      ctx.rotate(b.angle);
+      ctx.fillStyle = b.color;
+      ctx.fillRect(-b.size / 2, -b.size / 2, b.size, b.size);
+      ctx.restore();
+
+      // Update posisi
+      b.y += b.speed;
+      b.angle += b.rotation;
+
+      // Reset kalau keluar layar
+      if (b.y > canvasParticles.height + b.size) {
+        b.y = -b.size;
+        b.x = Math.random() * canvasParticles.width;
+      }
+    });
+
+    requestAnimationFrame(drawBlocks);
+  }
+
+  drawBlocks();
+}
