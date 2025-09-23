@@ -197,30 +197,25 @@ body {
 
 /* ===== HERO ===== */
 .hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  z-index: 2; /* tetap di atas canvas */
   text-align: center;
-  background: linear-gradient(135deg, #111, #1a1a2e);
-  padding: 2rem;
+  padding: 120px 20px;
+  background: transparent; /* transparan */
+  color: white; /* teks tetap putih */
 }
 
 .hero h1 {
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 800;
-  margin-bottom: 1rem;
+}
+
+.hero .highlight {
   background: linear-gradient(90deg, #ff00cc, #00ffff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.hero p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  max-width: 600px;
-}
 
 /* Buttons */
 .btn, .btn-outline {
@@ -315,4 +310,78 @@ body {
 
 .project-grid a:hover h3 {
   color: #ff00cc; /* kasih highlight warna neon pas hover */
+}
+
+
+/* Background Particles */
+#tetrisParticles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none; /* biar gak ganggu klik */
+}
+
+.projects {
+  position: relative;
+  overflow: hidden; /* canvas tetap di dalam section */
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.projects h2,
+.projects .project-grid {
+  position: relative;
+  z-index: 1; /* biar di atas partikel */
+}
+
+
+/* === GLOBAL PARTICLE BACKGROUND === */
+#tetrisParticles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  background: #0a0a0a; /* fallback background */
+}
+
+/* Pastikan semua konten di atas partikel */
+body > *:not(#tetrisParticles) {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* Semua section transparan */
+header,
+section,
+footer {
+  background: transparent;
+  position: relative;
+  z-index: 2; /* biar di atas canvas partikel */
+  color: white;
+}
+
+/* Tambahin text-shadow supaya teks tetap jelas */
+header h1, header p,
+section h2, section p, section h3, section h4,
+footer p {
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+
+#tetrisParticles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* selalu di paling belakang */
+  pointer-events: none;
+  background: #0a0a0a; /* fallback gelap */
 }
