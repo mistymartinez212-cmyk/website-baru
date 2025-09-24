@@ -47,7 +47,7 @@ window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
 
 
-// === GLOBAL TETRIS PARTICLE BACKGROUND ===
+// === GLOBAL TETRIS PARTICLE BACKGROUND (Optimized) ===
 const canvasParticles = document.getElementById("tetrisParticles");
 if (canvasParticles) {
   const ctx = canvasParticles.getContext("2d");
@@ -61,6 +61,11 @@ if (canvasParticles) {
 
   const colors = ["#FF00CC", "#00FFFF", "#FF8E0D", "#00FF72", "#F538FF"];
 
+  // Jumlah partikel sesuai device
+  let particleCount = 50;
+  if (window.innerWidth < 768) particleCount = 25;   // Mobile → lebih sedikit
+  if (window.innerWidth > 1600) particleCount = 70;  // Monitor besar → lebih banyak
+
   function randomBlock() {
     const size = 20 + Math.random() * 30;
     return {
@@ -70,11 +75,11 @@ if (canvasParticles) {
       color: colors[Math.floor(Math.random() * colors.length)],
       speed: 0.5 + Math.random() * 1.2,
       angle: Math.random() * Math.PI * 2,
-      rotation: (Math.random() - 0.5) * 0.02, // biar muter pelan
+      rotation: (Math.random() - 0.5) * 0.02,
     };
   }
 
-  const blocks = Array.from({ length: 50 }, randomBlock);
+  const blocks = Array.from({ length: particleCount }, randomBlock);
 
   function drawBlocks() {
     ctx.clearRect(0, 0, canvasParticles.width, canvasParticles.height);
@@ -91,7 +96,6 @@ if (canvasParticles) {
       b.y += b.speed;
       b.angle += b.rotation;
 
-      // Reset kalau keluar layar
       if (b.y > canvasParticles.height + b.size) {
         b.y = -b.size;
         b.x = Math.random() * canvasParticles.width;
@@ -103,3 +107,25 @@ if (canvasParticles) {
 
   drawBlocks();
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const faders = document.querySelectorAll(".fade-section");
+
+  const appearOptions = {
+    threshold: 0.2 // 20% elemen harus terlihat
+  };
+
+  const appearOnScroll = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target); // hanya muncul sekali
+      }
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+  });
+});
