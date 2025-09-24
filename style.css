@@ -70,20 +70,29 @@ h2 {
   gap: 20px;
 }
 .card {
-  background: rgba(255,255,255,0.05);
-  border-radius: 20px;
-  padding: 20px;
-  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  transition: transform 0.3s ease;
 }
+
 .card img {
-  width: 100%;
-  border-radius: 15px;
-  margin-bottom: 15px;
+  transition: transform 0.4s ease;
 }
+
 .card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(255,0,204,0.4);
+  transform: translateY(-10px);
 }
+
+.card:hover img {
+  transform: scale(1.1);
+}
+
+.card h3, .card p {
+  position: relative;
+  z-index: 2;
+}
+
 
 /* Team */
 .team-grid {
@@ -386,31 +395,172 @@ footer p {
   background: #0a0a0a; /* fallback gelap */
 }
 
-/* Canvas background */
-#tetrisParticles {
-  position: fixed;
+
+html {
+  scroll-behavior: smooth;
+}
+
+.navbar {
+  position: sticky;
   top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-  background: #0a0a0a; /* fallback gelap */
+  background: rgba(10,10,10,0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  z-index: 1000;
 }
 
-/* Semua section transparan */
-header,
-section,
-footer {
-  background: transparent;
-  position: relative;
-  z-index: 2;
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
   color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s, text-shadow 0.3s;
 }
 
-/* Teks lebih jelas */
-h1, h2, h3, h4, p, li {
-  text-shadow: 0 0 10px rgba(0,0,0,0.6);
+.nav-links a:hover {
+  color: #00ffff;
+  text-shadow: 0 0 8px #00ffff;
+}
+
+
+.client-logos {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+}
+
+.client-logos img {
+  height: 60px;
+  filter: grayscale(100%);
+  transition: filter 0.3s;
+}
+.client-logos img:hover {
+  filter: grayscale(0%);
+}
+
+.testimonial-grid {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.testimonial-card {
+  background: rgba(255,255,255,0.05);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  max-width: 300px;
+  text-align: center;
+}
+.testimonial-card img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+
+/* =====================
+   HERO ANIMASI MASUK
+   ===================== */
+.hero h1, .hero p {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+}
+.hero p {
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =====================
+   CARD HOVER EFEK
+   ===================== */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* =====================
+   BUTTON HOVER GLOW
+   ===================== */
+.btn, .btn-outline {
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: linear-gradient(90deg, #ff00ff, #00ffff);
+  box-shadow: 0 0 15px #00ffff;
+}
+
+.btn-outline:hover {
+  color: #00ffff;
+  border-color: #00ffff;
+  box-shadow: 0 0 10px #00ffff;
+}
+
+/* =====================
+   NAVBAR LINK HOVER
+   ===================== */
+.nav-links a {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: #00ffff;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+
+.hero h1, .hero p,
+.card,
+.btn, .btn-outline {
+  will-change: transform, opacity;
+}
+
+
+/* Semua section fade-in default */
+.fade-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Ketika elemen terlihat */
+.fade-section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 
