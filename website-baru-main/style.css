@@ -1,0 +1,661 @@
+/* Fonts & Reset */
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #0f0f0f;
+  color: #fff;
+  line-height: 1.6;
+}
+h1, h2, h3 { font-weight: 800; }
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(-45deg, #ff00cc, #3333ff, #00ffcc, #ffcc00);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+  padding: 100px 20px;
+  text-align: center;
+}
+.hero h1 {
+  font-size: 2.5rem;
+}
+.hero p {
+  margin: 15px 0;
+  font-size: 1.2rem;
+}
+.highlight { color: #ffcc00; }
+.buttons { margin-top: 20px; }
+.btn, .btn-outline {
+  display: inline-block;
+  padding: 12px 30px;
+  margin: 10px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.btn {
+  background: linear-gradient(45deg, #ff00cc, #3333ff);
+  color: #fff;
+}
+.btn:hover {
+  box-shadow: 0 0 20px #ff00cc, 0 0 40px #3333ff;
+  transform: translateY(-3px);
+}
+.btn-outline {
+  border: 2px solid #fff;
+  color: #fff;
+}
+.btn-outline:hover {
+  background: #fff;
+  color: #0f0f0f;
+}
+
+/* Sections */
+section {
+  padding: 80px 20px;
+  text-align: center;
+}
+h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+/* Projects */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.card img {
+  transition: transform 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card:hover img {
+  transform: scale(1.1);
+}
+
+.card h3, .card p {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* Team */
+.team-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.team-card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+  padding: 20px;
+  width: 200px;
+  transition: 0.3s;
+}
+.team-card img {
+  width: 100%;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(0,255,204,0.4);
+}
+
+/* Testimonials */
+.testimonial {
+  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+  padding: 20px;
+  margin: 15px auto;
+  max-width: 600px;
+}
+
+/* Contact */
+.contact-form {
+  max-width: 500px;
+  margin: 0 auto 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.contact-form input, .contact-form textarea {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+.contact-form input:focus, .contact-form textarea:focus {
+  box-shadow: 0 0 10px #ff00cc;
+}
+.contact-info {
+  margin-top: 20px;
+}
+
+/* Footer */
+footer {
+  background: #111;
+  padding: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+footer a {
+  color: #ffcc00;
+  text-decoration: none;
+}
+footer a:hover { text-decoration: underline; }
+
+/* Animations */
+@keyframes gradientBG {
+  0% {background-position:0% 50%}
+  50% {background-position:100% 50%}
+  100% {background-position:0% 50%}
+}
+
+/* Scroll Animation */
+.fade-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ===== GLOBAL STYLE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #0f0f0f;
+  color: #fff;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+/* Highlight warna neon */
+.highlight {
+  background: linear-gradient(90deg, #ff00cc, #3333ff, #00ffcc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  z-index: 2; /* tetap di atas canvas */
+  text-align: center;
+  padding: 120px 20px;
+  background: transparent; /* transparan */
+  color: white; /* teks tetap putih */
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+.hero .highlight {
+  background: linear-gradient(90deg, #ff00cc, #00ffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* Buttons */
+.btn, .btn-outline {
+  display: inline-block;
+  padding: 0.8rem 1.6rem;
+  margin: 0.5rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.btn {
+  background: linear-gradient(90deg, #ff00cc, #00ffff);
+  color: #fff;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btn-outline {
+  border: 2px solid #ff00cc;
+  color: #ff00cc;
+}
+
+.btn-outline:hover {
+  background: #ff00cc;
+  color: #fff;
+}
+
+/* ===== PROJECTS ===== */
+.projects {
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.projects h2 {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #fff;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: #1e1e2f;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(255, 0, 204, 0.4);
+}
+
+/* ===== TEAM ===== */
+.team {
+  padding: 5rem 2rem;
+  text-align: center;
+  background: #141414;
+}
+
+.team h2 {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+/* Hilangkan underline di link project card */
+.project-grid a {
+  text-decoration: none;
+  color: inherit; /* biar teks ikut warna default, bukan biru */
+  display: block; /* biar seluruh card bisa diklik */
+}
+
+
+.project-grid a:hover h3 {
+  color: #ff00cc; /* kasih highlight warna neon pas hover */
+}
+
+
+/* Background Particles */
+#tetrisParticles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none; /* biar gak ganggu klik */
+}
+
+.projects {
+  position: relative;
+  overflow: hidden; /* canvas tetap di dalam section */
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.projects h2,
+.projects .project-grid {
+  position: relative;
+  z-index: 1; /* biar di atas partikel */
+}
+
+
+/* === GLOBAL PARTICLE BACKGROUND === */
+#tetrisParticles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  background: #0a0a0a; /* fallback background */
+}
+
+/* Pastikan semua konten di atas partikel */
+body > *:not(#tetrisParticles) {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* Semua section transparan */
+header,
+section,
+footer {
+  background: transparent;
+  position: relative;
+  z-index: 2; /* biar di atas canvas partikel */
+  color: white;
+}
+
+/* Tambahin text-shadow supaya teks tetap jelas */
+header h1, header p,
+section h2, section p, section h3, section h4,
+footer p {
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+
+#tetrisParticles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* selalu di paling belakang */
+  pointer-events: none;
+  background: #0a0a0a; /* fallback gelap */
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: rgba(10,10,10,0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  z-index: 1000;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.nav-links a:hover {
+  color: #00ffff;
+  text-shadow: 0 0 8px #00ffff;
+}
+
+
+.client-logos {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+}
+
+.client-logos img {
+  height: 60px;
+  filter: grayscale(100%);
+  transition: filter 0.3s;
+}
+.client-logos img:hover {
+  filter: grayscale(0%);
+}
+
+.testimonial-grid {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.testimonial-card {
+  background: rgba(255,255,255,0.05);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  max-width: 300px;
+  text-align: center;
+}
+.testimonial-card img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+
+/* =====================
+   HERO ANIMASI MASUK
+   ===================== */
+.hero h1, .hero p {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+}
+.hero p {
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =====================
+   CARD HOVER EFEK
+   ===================== */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* =====================
+   BUTTON HOVER GLOW
+   ===================== */
+.btn, .btn-outline {
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: linear-gradient(90deg, #ff00ff, #00ffff);
+  box-shadow: 0 0 15px #00ffff;
+}
+
+.btn-outline:hover {
+  color: #00ffff;
+  border-color: #00ffff;
+  box-shadow: 0 0 10px #00ffff;
+}
+
+/* =====================
+   NAVBAR LINK HOVER
+   ===================== */
+.nav-links a {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: #00ffff;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+
+.hero h1, .hero p,
+.card,
+.btn, .btn-outline {
+  will-change: transform, opacity;
+}
+
+
+/* Semua section fade-in default */
+.fade-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Ketika elemen terlihat */
+.fade-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.contact-hero {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.contact-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.button-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.button-row .btn,
+.button-row .btn-outline {
+  flex: 1;
+  text-align: center;
+}
+
+.loading {
+  display: none;
+  color: #00ffff;
+  margin-top: 10px;
+}
+
+
+.back-home {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 2px solid #ff00cc;
+  color: #ff00cc;
+  text-decoration: none;
+  transition: 0.3s;
+  font-size: 14px;
+  z-index: 1000;
+}
+
+.back-home:hover {
+  background: #ff00cc;
+  color: white;
+  box-shadow: 0 0 10px #ff00cc;
+}
+
+.contact-hero {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.contact-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.button-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.button-row .btn,
+.button-row .btn-outline {
+  flex: 1;
+  text-align: center;
+}
+
+.success-toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #00c853;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 9999;
+}
+
+.success-toast.show {
+  opacity: 1;
+}
+
+
